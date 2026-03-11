@@ -8,10 +8,110 @@
   },
   "item": [
     {
-      "name": "Задачи",
+      "name": "Auth",
       "item": [
         {
-          "name": "Создать задачу",
+          "name": "AuthLogin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"login\": \"НОВОСЕРГИЕВСКАЯР(\",\r\n    \"password\": \"5636003278\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orgs",
+      "item": [
+        {
+          "name": "GetSectionTree",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/orgs/{{orgid}}/route-tree",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "orgs",
+                "{{orgid}}",
+                "route-tree"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Specialists",
+      "item": [
+        {
+          "name": "GetSpecialist",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}specialists/{{specialistId}}",
+              "host": [
+                "{{base_url}}specialists"
+              ],
+              "path": [
+                "{{specialistId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "CreateTask",
           "event": [
             {
               "listen": "test",
@@ -54,7 +154,7 @@
           "response": []
         },
         {
-          "name": "Создать задачу с изменением вечернего времени",
+          "name": "CreateTaskWithChangeSchedule",
           "request": {
             "auth": {
               "type": "noauth"
@@ -85,7 +185,7 @@
           "response": []
         },
         {
-          "name": "Получить данные задачи",
+          "name": "GetTask",
           "request": {
             "auth": {
               "type": "noauth"
@@ -106,7 +206,7 @@
           "response": []
         },
         {
-          "name": "Получить список задач",
+          "name": "GetTasks",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -137,10 +237,10 @@
       ]
     },
     {
-      "name": "Файлы",
+      "name": "Files",
       "item": [
         {
-          "name": "Загрузить файл",
+          "name": "UploadFile",
           "event": [
             {
               "listen": "test",
@@ -188,7 +288,7 @@
           "response": []
         },
         {
-          "name": "Скачать файл",
+          "name": "DownloadFile",
           "event": [
             {
               "listen": "test",
@@ -202,46 +302,6 @@
               }
             }
           ],
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "file",
-                  "type": "file",
-                  "src": "/C:/Users/Пользователь/Downloads/jsonschema-1c-main/jsonschema-1c-main/target/release/jsonschema_1c.dll"
-                },
-                {
-                  "key": "data",
-                  "value": "{\"name\":\"jsonschema_1c.dll\", \"size\":\"123213123\"}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": {
-              "raw": "{{base_url}}files/upload",
-              "host": [
-                "{{base_url}}files"
-              ],
-              "path": [
-                "upload"
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Организации",
-      "item": [
-        {
-          "name": "Получить дерево конфигураций и разделов",
           "request": {
             "auth": {
               "type": "noauth"
@@ -249,63 +309,19 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/orgs/{{orgid}}/route-tree",
+              "raw": "{{base_url}}files/{{fileId}}/download",
               "host": [
-                "{{base_url}}"
+                "{{base_url}}files"
               ],
               "path": [
-                "orgs",
-                "{{orgid}}",
-                "route-tree"
+                "{{fileId}}",
+                "download"
               ]
             }
           },
           "response": []
         }
       ]
-    },
-    {
-      "name": "Логин",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "request": {
-        "auth": {
-          "type": "noauth"
-        },
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"login\": \"НОВОСЕРГИЕВСКАЯР(\",\r\n    \"password\": \"5636003278\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{base_url}}/auth/login",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "auth",
-            "login"
-          ]
-        }
-      },
-      "response": []
     }
   ],
   "event": [
@@ -417,6 +433,14 @@
     },
     {
       "key": "authorId",
+      "value": ""
+    },
+    {
+      "key": "specialistId",
+      "value": ""
+    },
+    {
+      "key": "fileId",
       "value": ""
     }
   ]
