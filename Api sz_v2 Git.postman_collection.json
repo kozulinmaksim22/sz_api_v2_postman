@@ -59,6 +59,59 @@
       "name": "Orgs",
       "item": [
         {
+          "name": "GetOrg",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}orgs/{{orgid}}",
+              "host": [
+                "{{base_url}}orgs"
+              ],
+              "path": [
+                "{{orgid}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUsersForOrg",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}orgs/{{orgid}}/users",
+              "host": [
+                "{{base_url}}orgs"
+              ],
+              "path": [
+                "{{orgid}}",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetCurator",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}orgs/{{orgid}}/users",
+              "host": [
+                "{{base_url}}orgs"
+              ],
+              "path": [
+                "{{orgid}}",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "GetSectionTree",
           "request": {
             "auth": {
@@ -327,10 +380,48 @@
       "name": "Users",
       "item": [
         {
+          "name": "CreateUser",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"orgId\": {{orgid}},\r\n  \"phone\": \"+79050885524\",\r\n  \"name\": \"Максим\",\r\n  \"surname\": \"Козулин\",\r\n  \"middlename\": \"Владимирович\",\r\n  \"email\": \"kozulinmaksim22@gmail.com\",\r\n  \"positionId\": \"52e241c1-73b7-11e4-826e-8851fb5b0718\",\r\n  \"schedule\": {\r\n    \"weekdaysStart\": 28800,\r\n    \"weekdaysEnd\": 58320,\r\n    \"fridayStart\": 28800,\r\n    \"fridayEnd\": 58320,\r\n    \"lunchStart\": 46800,\r\n    \"lunchEnd\": 50400,\r\n    \"allowLunchCalls\": true,\r\n    \"allowOffdayCallsWeekdays\": true,\r\n    \"allowOffdayCallsFriday\": true\r\n  },\r\n  \"extraPhones\": [ \r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}users",
+              "host": [
+                "{{base_url}}users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "GetProfile",
           "request": {
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
-            "header": []
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}users/{{userId}}",
+              "host": [
+                "{{base_url}}users"
+              ],
+              "path": [
+                "{{userId}}"
+              ]
+            }
           },
           "response": []
         },
@@ -347,6 +438,28 @@
               "path": [
                 "{{userId}}",
                 "orgs"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Catalogs",
+      "item": [
+        {
+          "name": "GetUserPositions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}catalogs/user-positions",
+              "host": [
+                "{{base_url}}catalogs"
+              ],
+              "path": [
+                "user-positions"
               ]
             }
           },
