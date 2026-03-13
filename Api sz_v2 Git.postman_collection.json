@@ -52,6 +52,49 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "AuthLogout",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"login\": \"НОВОСЕРГИЕВСКАЯР(\",\r\n    \"password\": \"5636003278\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -426,6 +469,66 @@
           "response": []
         },
         {
+          "name": "SendCode",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"phone\": \"+79915010071\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}users/{{userId}}/send-code",
+              "host": [
+                "{{base_url}}users"
+              ],
+              "path": [
+                "{{userId}}",
+                "send-code"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ConfirmCode",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"code\": \"1646\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}users/{{userId}}/confirm-code",
+              "host": [
+                "{{base_url}}users"
+              ],
+              "path": [
+                "{{userId}}",
+                "confirm-code"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "GetOrgsForUser",
           "request": {
             "method": "GET",
@@ -438,6 +541,66 @@
               "path": [
                 "{{userId}}",
                 "orgs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateUser",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"code\": \"1646\"\r\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}users/{{userId}}",
+              "host": [
+                "{{base_url}}users"
+              ],
+              "path": [
+                "{{userId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUserTodaySchedule",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}users/{{userId}}/today-schedule",
+              "host": [
+                "{{base_url}}users"
+              ],
+              "path": [
+                "{{userId}}",
+                "today-schedule"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PostUserTodaySchedule Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}users/{{userId}}/today-schedule",
+              "host": [
+                "{{base_url}}users"
+              ],
+              "path": [
+                "{{userId}}",
+                "today-schedule"
               ]
             }
           },
