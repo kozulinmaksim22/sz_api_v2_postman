@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "e786143e-954c-4bc4-b59b-b5554eff71ad",
+    "_postman_id": "455e435a-ffd9-4ea6-a22f-4876ca250933",
     "name": "Api sz_v2 Git",
     "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "52262510"
+    "_exporter_id": "42513766"
   },
   "item": [
     {
@@ -74,23 +74,14 @@
             },
             "method": "POST",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"login\": \"НОВОСЕРГИЕВСКАЯР(\",\r\n    \"password\": \"5636003278\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
             "url": {
-              "raw": "{{base_url}}/auth/login",
+              "raw": "{{base_url}}/auth/logout",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "auth",
-                "login"
+                "logout"
               ]
             }
           },
@@ -142,13 +133,13 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}orgs/{{orgid}}/users",
+              "raw": "{{base_url}}orgs/{{orgid}}/curator",
               "host": [
                 "{{base_url}}orgs"
               ],
               "path": [
                 "{{orgid}}",
-                "users"
+                "curator"
               ]
             }
           },
@@ -163,14 +154,14 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/orgs/{{orgid}}/section-tree",
+              "raw": "{{base_url}}/orgs/{{orgid}}/route-tree",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "orgs",
                 "{{orgid}}",
-                "section-tree"
+                "route-tree"
               ]
             }
           },
@@ -207,56 +198,6 @@
       "name": "Tasks",
       "item": [
         {
-          "name": "GetTasks",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"orgId\": \"{{orgid}}\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"stage\": [\"onAccept\",\"onWork\",\"onQueue\",\"planned\",\"delayed\"],\r\n    \"name\": \"\",\r\n    \"page\": 1,\r\n    \"pageSize\": 20\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/tasks",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "tasks"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "GetTask",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/tasks/{{taskid}}",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "tasks",
-                "{{taskid}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "CreateTask",
           "event": [
             {
@@ -279,7 +220,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"orgid\": \"{{orgid}}\",\r\n    \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n    \"sectionId\": \"b1420423-662b-11ec-9757-2c56dc38ebb4\",\r\n    \"title\": \"Задача с задержкой без срочности\",\r\n    \"text\": \"Очень длинное описание (ложь)\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"timeForDelay\": \"2026-03-11T00:00:00\",\r\n    \"urgency\": false,\r\n    \"files\": []\r\n}",
+              "raw": "{\r\n    \"orgId\": \"{{orgid}}\",\r\n    \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n    \"sectionId\": \"b1420423-662b-11ec-9757-2c56dc38ebb4\",\r\n    \"title\": \"Задача с задержкой без срочности\",\r\n    \"text\": \"Очень длинное описание (ложь)\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"timeForDelay\": \"2026-03-11T00:00:00\",\r\n    \"urgency\": false,\r\n    \"files\": []\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -309,7 +250,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"orgid\": \"{{orgid}}\",\r\n    \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n    \"sectionId\": \"b1420423-662b-11ec-9757-2c56dc38ebb4\",\r\n    \"title\": \"Задача с изменением вечернего времени\",\r\n    \"text\": \"Очень длинное описание (ложь)\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"timeForDelay\": \"0001-01-01T00:00:00\",\r\n    \"urgency\": false,\r\n    \"files\": [],\r\n    \"addedTime\": \"21:00:00\"\r\n}",
+              "raw": "{\r\n    \"orgId\": \"{{orgid}}\",\r\n    \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n    \"sectionId\": \"b1420423-662b-11ec-9757-2c56dc38ebb4\",\r\n    \"title\": \"Задача с изменением вечернего времени\",\r\n    \"text\": \"Очень длинное описание (ложь)\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"timeForDelay\": \"0001-01-01T00:00:00\",\r\n    \"urgency\": false,\r\n    \"files\": [],\r\n    \"addedTime\": \"21:00:00\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -331,47 +272,37 @@
           "response": []
         },
         {
-          "name": "UpdateTask",
+          "name": "GetTask",
           "request": {
             "auth": {
               "type": "noauth"
             },
-            "method": "POST",
+            "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"version\": \"AAAAAAhkeps=\",\r\n    \"old\": {\r\n        \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n        \"sectionId\": \"b1420423-662b-11ec-9757-2c56dc38ebb4\"\r\n    },\r\n    \"now\": {\r\n        \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n        \"sectionId\": \"c15c8789-7462-11e4-826e-8851fb5b0718\"\r\n    }\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
             "url": {
-              "raw": "{{base_url}}/tasks/{{taskid}}/update",
+              "raw": "{{base_url}}/tasks/{{taskid}}",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
                 "tasks",
-                "{{taskid}}",
-                "update"
+                "{{taskid}}"
               ]
             }
           },
           "response": []
         },
         {
-          "name": "AcceptTask",
+          "name": "GetTasks",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
+            "method": "GET",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"rate\": 5\r\n}",
+              "raw": "{\r\n    \"orgId\": \"{{orgid}}\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"stage\": [\"onAccept\",\"onWork\",\"onQueue\",\"planned\",\"delayed\"],\r\n    \"name\": \"\",\r\n    \"page\": 1,\r\n    \"pageSize\": 20\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -379,223 +310,12 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/tasks/{{taskid}}/accept",
+              "raw": "{{base_url}}/tasks",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
-                "tasks",
-                "{{taskid}}",
-                "accept"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "RejectTask",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"reason\": \"Я так захотел\",\r\n  \"type\": \"reject\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/tasks/{{taskid}}/reject",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "tasks",
-                "{{taskid}}",
-                "reject"
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "RejectTask (reject)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n  \"reason\": \"Я так захотел\",\r\n  \"type\": \"reject\"\r\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{base_url}}/tasks/{{taskid}}/reject",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "tasks",
-                    "{{taskid}}",
-                    "reject"
-                  ]
-                }
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            },
-            {
-              "name": "RejectTask (reworkWithExpert)",
-              "originalRequest": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n  \"reason\": \"Я так захотел\",\r\n  \"type\": \"reworkWithExpert\"\r\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{base_url}}/tasks/{{taskid}}/reject",
-                  "host": [
-                    "{{base_url}}"
-                  ],
-                  "path": [
-                    "tasks",
-                    "{{taskid}}",
-                    "reject"
-                  ]
-                }
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "ReworkTask",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"text\": \"Хочу доделать\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/tasks/{{taskid}}/rework",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "tasks",
-                "{{taskid}}",
-                "rework"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "AcceptAndReworkTask",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"text\": \"Хочу доделать снова\",\r\n  \"files\": []\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/tasks/{{taskid}}/accept-and-rework",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "tasks",
-                "{{taskid}}",
-                "accept-and-rework"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "ReworkTaskWithExpert",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"text\": \"Мне надоело доделывать, хочу раз и навсегда\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/tasks/{{taskid}}/rework-with-expert",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "tasks",
-                "{{taskid}}",
-                "rework-with-expert"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "ActivateNowTask",
-          "request": {
-            "auth": {
-              "type": "noauth"
-            },
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/tasks/{{taskid}}/activate-now",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "tasks",
-                "{{taskid}}",
-                "activate-now"
+                "tasks"
               ]
             }
           },
@@ -703,7 +423,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"orgId\": {{orgid}},\r\n  \"phone\": \"+79050885524\",\r\n  \"name\": \"Максим\",\r\n  \"surname\": \"Козулин\",\r\n  \"middlename\": \"Владимирович\",\r\n  \"email\": \"kozulinmaksim22@gmail.com\",\r\n  \"positionId\": \"52e241c1-73b7-11e4-826e-8851fb5b0718\",\r\n  \"schedule\": {\r\n    \"weekdaysStart\": 28800,\r\n    \"weekdaysEnd\": 58320,\r\n    \"fridayStart\": 28800,\r\n    \"fridayEnd\": 58320,\r\n    \"lunchStart\": 46800,\r\n    \"lunchEnd\": 50400,\r\n    \"allowLunchCalls\": true,\r\n    \"allowOffdayCallsWeekdays\": true,\r\n    \"allowOffdayCallsFriday\": true\r\n  },\r\n  \"extraPhones\": [ \r\n  ]\r\n}",
+              "raw": "{\r\n  \"orgId\": \"{{orgid}}\",\r\n  \"phone\": \"+79050885524\",\r\n  \"name\": \"Максим\",\r\n  \"surname\": \"Козулин\",\r\n  \"middlename\": \"Владимирович\",\r\n  \"email\": \"kozulinmaksim22@gmail.com\",\r\n  \"positionId\": \"52e241c1-73b7-11e4-826e-8851fb5b0718\",\r\n  \"schedule\": {\r\n    \"weekdaysStart\": 28800,\r\n    \"weekdaysEnd\": 58320,\r\n    \"fridayStart\": 28800,\r\n    \"fridayEnd\": 58320,\r\n    \"lunchStart\": 46800,\r\n    \"lunchEnd\": 50400,\r\n    \"allowLunchCalls\": true,\r\n    \"allowOffdayCallsWeekdays\": true,\r\n    \"allowOffdayCallsFriday\": true\r\n  },\r\n  \"extraPhones\": [\r\n        {\r\n            \"type\": \"personal\",\r\n            \"phone\": \"+79915010072\",\r\n            \"addNumbers\": \"\",\r\n            \"comment\": \"Какой-то личный номер\"\r\n        },\r\n        {\r\n            \"type\": \"work\",\r\n            \"phone\": \"+73915010072\",\r\n            \"addNumbers\": \"123\",\r\n            \"comment\": \"Какой-то рабочий номер\"\r\n        } \r\n  ]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -779,7 +499,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"code\": \"1646\"\r\n}",
+              "raw": "{\r\n    \"code\": \"1314\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -827,7 +547,12 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"code\": \"1646\"\r\n}"
+              "raw": "{\r\n    \"version\": \"AAAAAAhl73c=\",\r\n    \"old\": {\r\n      \"name\": \"Максим\",\r\n      \"surname\": \"Козулин\",\r\n      \"middlename\": \"Владимирович\",\r\n      \"positionId\": \"52e241c1-73b7-11e4-826e-8851fb5b0718\",\r\n      \"stage\": \"works\",\r\n      \"email\": \"kozulinmaksim22@gmail.com\",\r\n      \"schedule\": {\r\n        \"weekdaysStart\": 28800,\r\n        \"weekdaysEnd\": 58320,\r\n        \"fridayStart\": 28800,\r\n        \"fridayEnd\": 58320,\r\n        \"lunchStart\": 46800,\r\n        \"lunchEnd\": 50400,\r\n        \"allowLunchCalls\": true,\r\n        \"allowOffdayCallsWeekdays\": true,\r\n        \"allowOffdayCallsFriday\": true\r\n      },\r\n      \"extraPhones\": [\r\n        {\r\n          \"type\": \"personal\",\r\n          \"phone\": \"+79915010072\",\r\n          \"addNumbers\": \"\",\r\n          \"comment\": \"\"\r\n        },\r\n        {\r\n          \"type\": \"work\",\r\n          \"phone\": \"+73915010072\",\r\n          \"addNumbers\": \"123\",\r\n          \"comment\": \"\"\r\n        }\r\n      ]\r\n    },\r\n    \"new\": {\r\n      \"name\": \"Максим\",\r\n      \"surname\": \"Козулин\",\r\n      \"middlename\": \"Владимирович\",\r\n      \"positionId\": \"52e241c1-73b7-11e4-826e-8851fb5b0718\",\r\n      \"stage\": \"fired\",\r\n      \"email\": \"maksim.kozulin1@example.com\",\r\n      \"schedule\": {\r\n        \"weekdaysStart\": 28800,\r\n        \"weekdaysEnd\": 58320,\r\n        \"fridayStart\": 28800,\r\n        \"fridayEnd\": 58320,\r\n        \"lunchStart\": 46800,\r\n        \"lunchEnd\": 50400,\r\n        \"allowLunchCalls\": true,\r\n        \"allowOffdayCallsWeekdays\": true,\r\n        \"allowOffdayCallsFriday\": true\r\n      },\r\n      \"extraPhones\": [\r\n        {\r\n          \"type\": \"personal\",\r\n          \"phone\": \"+79915010072\",\r\n          \"addNumbers\": \"\",\r\n          \"comment\": \"\"\r\n        }\r\n      ]\r\n    }\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
             },
             "url": {
               "raw": "{{base_url}}users/{{userId}}",
@@ -862,8 +587,17 @@
         {
           "name": "PostUserTodaySchedule Copy",
           "request": {
-            "method": "GET",
+            "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"start\": 29800,\r\n    \"end\": 59320\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
               "raw": "{{base_url}}users/{{userId}}/today-schedule",
               "host": [
