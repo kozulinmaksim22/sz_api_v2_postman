@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "e03672d9-9eb3-4197-bf2a-5c8aa4f535aa",
-    "name": "Api sz_v2 Git Copy",
+    "_postman_id": "32a62fa4-ae41-4487-ab3d-a7fe68747e3d",
+    "name": "Api sz_v2 Git",
     "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "42513766"
+    "_exporter_id": "52262510"
   },
   "item": [
     {
@@ -279,7 +279,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"orgid\": \"{{orgid}}\",\r\n    \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n    \"sectionId\": \"b1420423-662b-11ec-9757-2c56dc38ebb4\",\r\n    \"title\": \"Задача с задержкой без срочности\",\r\n    \"text\": \"Очень длинное описание (ложь)\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"timeForDelay\": \"2026-03-11T00:00:00\",\r\n    \"urgency\": false,\r\n    \"files\": []\r\n}",
+              "raw": "{\r\n    \"orgId\": \"{{orgid}}\",\r\n    \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n    \"sectionId\": \"b1420423-662b-11ec-9757-2c56dc38ebb4\",\r\n    \"title\": \"Задача с задержкой без срочности\",\r\n    \"text\": \"Очень длинное описание (ложь)\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"timeForDelay\": \"2026-03-11T00:00:00\",\r\n    \"urgency\": false,\r\n    \"files\": []\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -309,7 +309,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"orgid\": \"{{orgid}}\",\r\n    \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n    \"sectionId\": \"b1420423-662b-11ec-9757-2c56dc38ebb4\",\r\n    \"title\": \"Задача с изменением вечернего времени\",\r\n    \"text\": \"Очень длинное описание (ложь)\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"timeForDelay\": \"0001-01-01T00:00:00\",\r\n    \"urgency\": false,\r\n    \"files\": [],\r\n    \"addedTime\": \"21:00:00\"\r\n}",
+              "raw": "{\r\n    \"orgId\": \"{{orgid}}\",\r\n    \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n    \"sectionId\": \"b1420423-662b-11ec-9757-2c56dc38ebb4\",\r\n    \"title\": \"Задача с изменением вечернего времени\",\r\n    \"text\": \"Очень длинное описание (ложь)\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"timeForDelay\": \"0001-01-01T00:00:00\",\r\n    \"urgency\": false,\r\n    \"files\": [],\r\n    \"addedTime\": \"21:00:00\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -596,6 +596,36 @@
                 "tasks",
                 "{{taskid}}",
                 "activate-now"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SendProblem",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"reason\": \"другое\",\r\n  \"reasonRole\": \"spec\",\r\n  \"taskWithProblem\": \"{{taskid}}\",\r\n  \"text\": \"БОльшое описание проблемы\",\r\n  \"authorId\": \"{{authorId}}\",\r\n  \"files\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/send-problem",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tasks",
+                "send-problem"
               ]
             }
           },
