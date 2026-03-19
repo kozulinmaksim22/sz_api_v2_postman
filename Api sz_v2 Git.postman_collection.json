@@ -1012,7 +1012,7 @@
           "if (!isExcluded) {\r",
           "\r",
           "    // Получаем значение JWT из переменных коллекции\r",
-          "    let JWT = \"BEARER \" + pm.collectionVariables.get(\"JWT\");\r",
+          "    let JWT = pm.collectionVariables.get(\"JWT\");\r",
           "\r",
           "    // Проверяем что ключ существует\r",
           "    if (JWT) {\r",
@@ -1045,7 +1045,7 @@
         "requests": {},
         "exec": [
           "// Получаем значение заголовка x_user\r",
-          "let jwtToken = pm.response.headers.get(\"x_user\");\r",
+          "let jwtToken = pm.response.headers.get(\"x-user\");\r",
           "\r",
           "// Проверяем наличие заголовка\r",
           "if (jwtToken) {\r",
