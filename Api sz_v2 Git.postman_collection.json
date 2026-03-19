@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "32a62fa4-ae41-4487-ab3d-a7fe68747e3d",
+    "_postman_id": "180e6f49-99e9-43eb-9994-d4cdc6faa83c",
     "name": "Api sz_v2 Git",
     "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -208,15 +208,12 @@
       "item": [
         {
           "name": "GetTasks",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
           "request": {
-            "method": "GET",
+            "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"orgId\": \"{{orgid}}\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"stage\": [\"onAccept\",\"onWork\",\"onQueue\",\"planned\",\"delayed\"],\r\n    \"name\": \"\",\r\n    \"page\": 1,\r\n    \"pageSize\": 20\r\n}",
+              "raw": "{\r\n    \"orgId\": \"{{orgid}}\",\r\n    \"authorId\": [\"{{authorId}}\", \"a9c65f1f-5beb-11f0-97a5-b42e999edbbc\"],\r\n    \"stage\": [\"onAccept\",\"onWork\",\"onQueue\",\"planned\",\"delayed\"],\r\n    \"name\": \"\",\r\n    \"page\": 1,\r\n    \"pageSize\": 20\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
