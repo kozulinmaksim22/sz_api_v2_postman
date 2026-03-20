@@ -208,6 +208,95 @@
       "item": [
         {
           "name": "GetTasks",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "// Проверяем, что сервер вернул статус 200 OK",
+                  "pm.test('Статус код 200', () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "// Проверяем, что тело ответа является валидным JSON",
+                  "pm.test('Тело ответа является валидным JSON', () => {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "// --- Обязательные поля верхнего уровня (GetTasksResponse) ---",
+                  "",
+                  "// Проверяем наличие всех обязательных полей согласно схеме GetTasksResponse.json",
+                  "pm.test('Ответ содержит все обязательные поля верхнего уровня', () => {",
+                  "    pm.expect(jsonData).to.have.property('count');",
+                  "    pm.expect(jsonData).to.have.property('page');",
+                  "    pm.expect(jsonData).to.have.property('pages');",
+                  "    pm.expect(jsonData).to.have.property('pageSize');",
+                  "    pm.expect(jsonData).to.have.property('current-state-guid');",
+                  "    pm.expect(jsonData).to.have.property('items');",
+                  "});",
+                  "",
+                  "// Проверяем, что count — целое число >= 0 (общее количество задач в наборе)",
+                  "pm.test('count — целое число >= 0', () => {",
+                  "    pm.expect(jsonData.count).to.be.a('number');",
+                  "    pm.expect(jsonData.count).to.be.at.least(0);",
+                  "    pm.expect(Number.isInteger(jsonData.count)).to.be.true;",
+                  "});",
+                  "",
+                  "// Проверяем, что page — целое число >= 1 (текущая страница)",
+                  "pm.test('page — целое число >= 1', () => {",
+                  "    pm.expect(jsonData.page).to.be.a('number');",
+                  "    pm.expect(jsonData.page).to.be.at.least(1);",
+                  "    pm.expect(Number.isInteger(jsonData.page)).to.be.true;",
+                  "});",
+                  "",
+                  "// Проверяем, что pages — целое число >= 0 (всего страниц)",
+                  "pm.test('pages — целое число >= 0', () => {",
+                  "    pm.expect(jsonData.pages).to.be.a('number');",
+                  "    pm.expect(jsonData.pages).to.be.at.least(0);",
+                  "    pm.expect(Number.isInteger(jsonData.pages)).to.be.true;",
+                  "});",
+                  "",
+                  "// Проверяем, что pageSize — целое число >= 1 (размер страницы)",
+                  "pm.test('pageSize — целое число >= 1', () => {",
+                  "    pm.expect(jsonData.pageSize).to.be.a('number');",
+                  "    pm.expect(jsonData.pageSize).to.be.at.least(1);",
+                  "    pm.expect(Number.isInteger(jsonData.pageSize)).to.be.true;",
+                  "});",
+                  "",
+                  "// Проверяем, что current-state-guid — строка (ГУИД текущего набора задач)",
+                  "pm.test('current-state-guid — строка', () => {",
+                  "    pm.expect(jsonData['current-state-guid']).to.be.a('string');",
+                  "});",
+                  "",
+                  "// Проверяем, что items — массив",
+                  "pm.test('items — массив', () => {",
+                  "    pm.expect(jsonData.items).to.be.an('array');",
+                  "});",
+                  "",
+                  "// Проверяем, что количество элементов в items не превышает pageSize",
+                  "pm.test('Количество элементов в items не превышает pageSize', () => {",
+                  "    pm.expect(jsonData.items.length).to.be.at.most(jsonData.pageSize);",
+                  "});",
+                  "",
+                  "// Проверяем обязательные поля каждого элемента массива items",
+                  "pm.test('Каждый элемент items содержит обязательные поля с корректными типами', () => {",
+                  "    jsonData.items.forEach((item, index) => {",
+                  "        pm.expect(item, `items[${index}].id должен быть строкой`).to.have.property('id').that.is.a('string');",
+                  "        pm.expect(item, `items[${index}].orgId должен быть строкой`).to.have.property('orgId').that.is.a('string');",
+                  "        pm.expect(item, `items[${index}].stage должен быть строкой`).to.have.property('stage').that.is.a('string');",
+                  "        pm.expect(item, `items[${index}].title должен быть строкой`).to.have.property('title').that.is.a('string');",
+                  "        pm.expect(item, `items[${index}].authorId должен быть строкой`).to.have.property('authorId').that.is.a('string');",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [],
@@ -234,6 +323,32 @@
         },
         {
           "name": "GetTask",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Статус код 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Тело ответа является валидным JSON\", () => {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"Ответ содержит обязательные поля\", () => {",
+                  "    pm.expect(jsonData).to.have.property(\"id\").that.is.a(\"string\");",
+                  "    pm.expect(jsonData).to.have.property(\"title\").that.is.a(\"string\");",
+                  "    pm.expect(jsonData).to.have.property(\"stage\").that.is.a(\"string\");",
+                  "    pm.expect(jsonData).to.have.property(\"orgId\").that.is.a(\"string\");",
+                  "});"
+                ]
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "noauth"
@@ -276,7 +391,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"orgId\": \"{{orgid}}\",\r\n    \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n    \"sectionId\": \"b1420423-662b-11ec-9757-2c56dc38ebb4\",\r\n    \"title\": \"Задача для тестирования принятия\",\r\n    \"text\": \"Очень длинное описание (ложь)\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"timeForDelay\": \"0001-01-01T00:00:00\",\r\n    \"urgency\": false,\r\n    \"files\": []\r\n}",
+              "raw": "{\r\n    \"orgId\": \"{{orgid}}\",\r\n    \"categoryId\": \"d3a3e739-670d-11e4-8268-8851fb5b0718\",\r\n    \"sectionId\": \"b1420423-662b-11ec-9757-2c56dc38ebb4\",\r\n    \"title\": \"Задача для тестирования принятия\",\r\n    \"text\": \"Очень длинное описание (ложь)\",\r\n    \"authorId\": \"{{authorId}}\",\r\n    \"timeForDelay\": \"2026-03-20T22:00:00.000Z\",\r\n    \"urgency\": false,\r\n    \"files\": []\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
